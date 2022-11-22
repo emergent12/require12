@@ -1,0 +1,254 @@
+Assignement 1A:
+1.	Commands description
+2.	Syntax of all commands
+3.	Options related to commands(atleast 3)
+4.	echo, ls, read, cat, touch, test, loops, arithmetic comparison, conditional loops, grep, sed etc.
+
+Assignment 1B:
+1.	What is shell scripting?
+ans: A shell script is a list of commands in a computer program that is run by the Unix shell which is a command line interpreter.
+
+2.	What are different types of shell?
+Ans: Bourne Shell. Bourne shell (sh) Korn Shell (ksh) Bourne Again shell (bash) POSIX shell (sh)
+C Shell.
+
+3.	What is the use of shell scripting?
+Ans: We can avoid repetative task by writing them at one place and using as we want.
+
+4.	How to run code of shell scripting?
+Ans : ./shellFileName.sh
+************************************************************************************
+******************************************************************
+Assignment 2:
+1.	What is system call?
+Ans:  A system call is a way for programs to interact with the operating system. 
+
+2.	What is fork system call?
+Ans: fork system call is used to create new process.
+
+3.	What are the return values of fork?
+Ans: Return values of fork are zero,positive and negative.
+
+4.	What is pid?
+Ans : it is the id of proceess.
+
+5.	What is ppid?
+Ans : it is the id of parent process of process.
+
+6.	How to get the values of pid and ppid? (getpid, getppid)
+Ans: In c We have funtions for that getpid() and getppid();
+
+7.	What is wait system call?
+Ans: The wait() system call suspends execution of the current process until one of its children terminates.
+
+8.	What is execve system call?
+Ans: execve() transforms the calling process into a new process. The new process is constructed from an ordinary file, whose name is pointed to by path, called the "new process file"
+
+9.	How to create orphan and zombie state using wait system call?
+Ans: This can be done by invoking wait() system call by the parent process. The parent process then transitions from running state to waiting state. The parent process doesn't wait for the child process and executes along with the child. The parent keeps on executing some other code along with the child.
+
+
+Assignment 3:
+1.	What is waiting time?
+Ans: The Total amount of time for which the process waits for the CPU to be assigned is called waiting time.
+
+2.	What is turnaround time? 
+Ans: the total amount of time spend by process from arrival to complete is called turnaround time. 
+
+3.	What is Burst time? 
+Ans: the total amount of time required by the CPU to execute the whole process.
+
+4.	What is arrival time? 
+Ans:the time at which process enters in ready queue.
+
+5.	What is the formula for waiting time?
+Ans: Waiting Time = turnaround time - Burst Time 
+
+6.	What is the formula for turnaround time?  
+Ans:  TA = WA + BT  or TA = CT - AT
+
+7.	What is other scheduling algorithm? 
+Ans: Other scheduling algorithms are FCFS, ROUND ROBIN.
+
+8.	What are the criteria of SJF? 
+Ans: burst time is the criteria for SJF.
+
+9.	What is the criteria for RR? 
+Ans: time quantum is the criteria for ROUND ROBIN.
+
+Assignment 4:
+1.	What is producer consumer/reader writer problem?
+Ans:Producer-Consumer problem is a classical synchronization problem in the operating system. With the presence of more than one process and limited resources in the system the synchronization problem arises. If one resource is shared between more than one process at the same time then it can lead to data inconsistency.
+
+2.	What is up and down code?
+3.	What is pseudo code for producer consumer/Reader writer problem?
+void producer( void )  
+{  
+  wait ( empty );  
+  wait(S);  
+  Produce_item(item P)  
+  buffer[ in ] = item P;  
+  in = (in + 1)mod n  
+  signal(S);  
+  signal(full);  
+    
+}  
+void consumer(void)  
+{  
+  wait ( empty );  
+  wait(S);  
+  itemC = buffer[ out ];  
+  out = ( out + 1 ) mod n;  
+  signal(S);  
+  signal(empty);  
+}  
+
+
+4.	What is critical section?
+Ans: When more than one processes access the same code segment that segment is known as the critical section.
+
+5.	What is mutual exclusion?
+Ans: Mutual exclusion is a property of process synchronization which states that “no two processes can exist in the critical section at any given point of time”.
+
+6.	What is pseudo code for producer consumer / reader writer problem using sempahore?
+7.	Difference between producer and consumer/ reader writer?
+Ans: Both PCP and RWP Producers and Writers modifies shared resource. The main difference is on the Consumer and Reader side. Where Reader just read a shared resource with the guarantee that it won't modify it, consumer changes it's stated by taking the message out of the buffer.
+
+8.	What is process synchronization?
+Ans: Processes Synchronization or Synchronization is the way by which processes that share the same memory space are managed in an operating system.
+
+
+Assignment No 5:
+1.	What is deadlock?
+Ans: A deadlock is a situation in which two computer 
+programs sharing the same resource are effectively
+ preventing each other from accessing the resource, 
+ resulting in both programs ceasing to function. 
+
+2.	What are the necessary conditions for deadlock?
+Ans: The four necessary conditions for a deadlock situation to occur are mutual exclusion, hold and wait, no preemption and circular set.
+
+3.	What is the use of bankers’ algorithm?
+Ans: Banker's algorithm is used to prevent the deadlock condition. The banker algorithm is sometimes called the detection algorithm.
+
+4.	What are the Strategies to deal with deadlock? (Prevention, Avoidance, Detection and Recovery)
+Ans: There are four methods of handling deadlocks - deadlock avoidance, deadlock prevention, deadline detection and recovery and deadlock ignorance. We can prevent a deadlock by preventing any one of the four necessary conditions for a deadlock.
+
+5.	How bankers algorithm avoid deadlock?
+Ans: Bankers algorithm consists of two main algorithms used to avoid deadlock and control the processes within the system: 
+Safety algorithm and Resource request algorithm. Safety algorithm in OS is used to mainly check whether the system is in a safe state or not.
+and The resource request algorithm checks the behavior of a system whenever a particular process makes a resource request in a system.
+ It mainly checks whether resource requests can be safely granted or not within the system
+
+6.	What is need matrix, allocation matrix and maximum matrix?
+Ans: Need: It is an M x N matrix sequence representing the number of remaining resources for each process.
+
+7.	Steps to solve the problem of banker algorithm?
+Safety algorithm
+1) Let Work and Finish be vectors of length ‘m’ and ‘n’ respectively. 
+Initialize: Work = Available 
+Finish[i] = false; for i=1, 2, 3, 4….n
+2) Find an i such that both 
+a) Finish[i] = false 
+b) Needi <= Work 
+if no such i exists goto step (4)
+3) Work = Work + Allocation[i] 
+Finish[i] = true 
+goto step (2)
+4) if Finish [i] = true for all i 
+then the system is in a safe state 
+
+Resource Request algorithm
+1) If Requesti <= Needi 
+Goto step (2) ; otherwise, raise an error condition, since the process has exceeded its maximum claim.
+2) If Requesti <= Available 
+Goto step (3); otherwise, Pi must wait, since the resources are not available.
+3) Have the system pretend to have allocated the requested resources to process Pi by modifying the state as 
+follows: 
+Available = Available – Requesti 
+Allocationi = Allocationi + Requesti 
+Needi = Needi– Requesti
+
+
+Assignment No 6:
+1.	What is virtual memory?
+Ans: Virtual memory is a memory management technique where secondary memory can be used as if it were a part of the main memory.
+
+2.	What is physical and logical address?
+Ans: Logical Address is generated by CPU while a program is running. The logical address is virtual address as it does not exist physically, therefore, it is also known as Virtual Addres
+Physical Address identifies a physical location of required data in a memory. The user never directly deals with the physical address but can access by its corresponding logical address
+
+3.	What is page?
+Ans: It is the smallest unit of data for memory management in a virtual memory operating system
+
+4.	What is frames?
+Ans: frame is the smallest fixed-length contiguous block of physical memory into which memory pages are mapped by the operating system.
+
+5.	Mapping of addresses?
+6.	What is the concept of paging?
+7.	What are the page replacement policies?
+8.	What is page fault?
+Ans: What is page fault with example?
+Image result for What is page fault?
+A page fault occurs when a program attempts to access data or code that is in its address space, but is not currently located in the system RAM
+
+9.	What is page hit?
+Ans:  When the CPU attempts to obtain a needed page from main memory and the page exists in main memory (RAM), 
+
+10.	Concept of LRU, Optimal and FIFO in detail
+// In optimal page fault we use the page which is not used for longest dimention of time in future.
+In Lru we repalce the page which used least recently.
+hen a page fault occurs, then the page that has not been used for the longest duration of time is replaced by the newly requested page.
+In fifo we os keep track of pages in queue.
+
+11.	Difference between paging and segmentation.
+Ans: In paging, the program is divided into fixed or mounted size pages.
+In segmentation, the program is divided into variable size sections.
+
+
+Assignment no 7:
+1.	What is Interprocess communication?
+Ans: Inter process Communication (IPC) is a mechanism which allows the exchange of data between processes. It enables resource and data sharing between the processes without interference.
+
+2.	What is cooperating processes?
+Cooperating processes are those that can affect or are affected by other processes running on the system. Cooperating processes may share data with each other.
+
+3.	What are the two ways of interprocess communication (Message passing and shared memory)?
+Ans: shared memory and mesasge passing.
+
+4.	What is Message passing? Explain in detail
+Ans: Message passing refers to services performing a simple, one-way transfer operation between two programs. Like the other one-way messaging models, message passing generally leaves the sending program unblocked
+
+5.	What is Shared memory? Explain in detail.
+Ans: In computer science, shared memory is memory that may be simultaneously accessed by multiple programs with an intent to provide communication among them or avoid redundant copies. Shared memory is an efficient means of passing data between programs.
+
+6.	What is pipes?
+Ans: A pipe simply refers to a temporary software connection between two programs or commands. 
+
+7.	Which functions are used to create pipes?
+Ans: The pipe() function shall create a pipe and place two file descriptors, one each into the arguments fildes[0] and fildes[1], that refer to the open file descriptions for the read and write ends of the pipe
+
+8.	Which functions are used to create shared memory?
+Ans: Two functions shmget() and shmat() are used for IPC using shared memory. shmget() function is used to create the shared memory segment, while the shmat() function is used to attach the shared segment with the process's address space.
+
+Assignment No 8:
+1.	What is seek time?
+Ans: Time taken to reach reach up to desire track.
+2.	What is the use of SSTF, SCAN and C-LOOK?
+Ans: The goal of these algorithm is to minimise seek time.
+3.	What is disk scheduling?
+Ans: Disk Scheduling Algorithm' is an algorithm that keeps and manages input and output requests arriving for the disk in a system.
+
+4.	What is head?
+Ans: 'head' is the intial position of disk head. 
+5.	What are three factors that determine that determine disk arm scheduling algorithm?(Seek time, rotational delay, actual data transfer time)
+Ans: Seek time, rotational delay, actual data transfer time)
+6.	Working of SSTF, SCAN and C-LOOK.
+Ans:
+c-look:
+It is a combination of the LOOK and SCAN disk scheduling algorithms. In this disk scheduling algorithm, the head begins from the initial request to the last request in the other direction and serves all requests in between. The head jumps in the other direction after finishing the last request at one end and proceeds towards the remaining requests, completing them in the same direction as previously. Unlike LOOK, it only responds to requests in one direction.
+
+
+sstf:
+SSTF stands for Shortest Seek Time First, and it serves the request that is closest to the current position of the head. The direction of the head pointer is quite important in this algorithm. When a tie happens between requests, the head will serve the request in its current direction. In comparison to the FCFS, the SSTF algorithm is very efficient in terms of the total seek time.
+
